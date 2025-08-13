@@ -1,13 +1,15 @@
 import Header from './components/Header'
+import About from './components/About'
 import styles from './App.module.css'
+import Portfolio from './components/Portfolio'
 
 function App() {
   return (
     <div>
       <Header />
       <main className={styles.appHeader}>
-        <h2>Welcome to My Website</h2>
-        <p>This is the place where you can find out more about me!</p>
+        <About />
+        <Portfolio />
       </main>
     </div>
   )
