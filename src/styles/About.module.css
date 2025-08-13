@@ -1,5 +1,5 @@
 .about {
-  background-color: #1b263b;
+  background-color: #2a2a2a;
   color: white;
   padding: 2rem;
   width: 100%;
@@ -29,7 +29,7 @@
 }
 
 .skills {
-  background-color: #0d1b2a;
+  background-color: #1c1c1c;
   padding: 1.5rem;
   border-radius: 8px;
   max-width: 600px;
