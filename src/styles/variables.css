@@ -1,0 +1,15 @@
+:root {
+  /* Dark mode defaults */
+  --bg-color-footer: #1c1c1c;
+  --bg-color-about: #1a1a1a;
+  --bg-color-portfolio: #121212;
+  --card-bg-color: #2a2a2a;
+
+  --text-color: #ffffff;
+  --muted-text-color: #cccccc;
+
+  --link-color: #4ea1f7;
+  --link-hover-color: #78aaff;
+
+  --border-color: #333333;
+}

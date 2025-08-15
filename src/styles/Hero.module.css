@@ -1,16 +1,15 @@
-:root {
-  --hero-bg-color: #1c1c1c;   
-  --text-color: #ffffff;      
-}
-
 .hero {
   display: flex;
-  align-items: center;
-  gap: 1.5rem;
+  flex-direction: column;     
+  justify-content: center;     
+  align-items: center;        
+  height: 200px;               
   padding: 3rem 2rem;
-  background-color: var(--hero-bg-color);
+  background-color: var(--bg-color-hero); 
   color: var(--text-color);
   border-bottom: 1px solid #444;
+  text-align: center;
+  gap: 1.5rem;                
 }
 
 .profilePic {
@@ -18,7 +17,7 @@
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
 }
 
 .name {
@@ -26,9 +25,9 @@
   font-weight: 700;
 }
 
+/* Responsive */
 @media (max-width: 600px) {
   .hero {
-    flex-direction: column;
     padding: 2rem 1rem;
   }
 

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import styles from '../styles/About.module.css'; 
+import styles from '../styles/Skills.module.css'; 
 
 export function SkillItem({ children }) {
   const ref = useRef();

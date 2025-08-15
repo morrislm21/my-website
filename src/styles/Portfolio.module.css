@@ -2,8 +2,8 @@
   width: 100%;
   padding: 2rem;
   box-sizing: border-box;
-  color: white;
-  background-color: #121212; 
+  color: var(--text-color);
+  background-color: var(--bg-color-portfolio); /* darker greyscale */
   font-family: Arial, sans-serif;
 }
 
@@ -11,6 +11,7 @@
   display: flex;
   gap: 2rem;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .column {
@@ -25,19 +26,28 @@ h2 {
 
 h3 {
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #2a2a2a;
+  border-bottom: 2px solid var(--card-border-color);
   padding-bottom: 0.5rem;
 }
 
 .experienceItem {
   margin-bottom: 2rem;
-  background-color: #2a2a2a;
+  background-color: var(--card-bg-color);
   padding: 1rem 1.5rem;
   border-radius: 8px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.experienceItem.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .dates {
-  color: #a0a0a0;
+  color: var(--muted-text-color);
   font-weight: normal;
   font-size: 0.9rem;
 }
@@ -45,13 +55,18 @@ h3 {
 .role {
   font-style: italic;
   margin-bottom: 1rem;
-  color: #ccc;
+  color: var(--muted-text-color);
 }
 
-.experienceItem ul {
-  margin-left: 1.2rem;
+/* Fully left-aligned lists */
+.experienceItem ul,
+.projectItem ul {
+  margin: 0;
+  padding-left: 1rem; /* flush with card content */
   margin-bottom: 1rem;
-  color: #ddd;
+  color: var(--muted-text-color);
+  list-style-type: disc;
+  list-style-position: inside;
 }
 
 .projects {
@@ -61,24 +76,26 @@ h3 {
 .projectItem {
   margin-bottom: 1.5rem;
   text-align: left;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.projectItem.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .projectItem h5 {
   margin-bottom: 0.5rem;
-  color: #fff;
-}
-
-.projectItem ul {
-  margin-left: 1.2rem;
-  margin-bottom: 0.5rem;
-  color: #ddd;
-  list-style-type: disc;
+  color: var(--text-color);
 }
 
 .projectLinks {
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   padding-left: 0;
   margin-top: 0.5rem;
 }
@@ -90,7 +107,7 @@ h3 {
 .inlineLink a,
 .projectItem p a,
 .projectLinks a {
-  color: #4ea1f7;
+  color: var(--link-color);
   text-decoration: underline;
 }
 
@@ -108,7 +125,7 @@ h3 {
 .videoWrapper p {
   margin-bottom: 0.5rem;
   font-weight: bold;
-  color: #78aaff;
+  color: var(--link-color);
 }
 
 /* Responsive */
@@ -120,4 +137,8 @@ h3 {
   .experienceItem {
     padding: 1rem;
   }
+}
+
+section {
+  scroll-margin-top: 80px; /* or whatever your navbar height is */
 }

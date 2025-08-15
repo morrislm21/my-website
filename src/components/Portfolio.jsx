@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+import useScrollReveal from '../hooks/useScrollReveal';
 import styles from '../styles/Portfolio.module.css';
 
 const experiences = [
@@ -61,7 +63,8 @@ const experiences = [
   {
     id: 'worship',
     company: 'Waypoint Church',
-    role: 'Contract Student Worship Leader (August 2022–Present)',
+    dates: 'August 2022–Present',
+    role: 'Contract Student Worship Leader',
     description: [
       'Plan services for student worship using Planning Center for a student ministry of over 200 students',
       'Lead musical worship for midweek services, weekend retreats, and student camps',
@@ -74,7 +77,8 @@ const experiences = [
   {
     id: 'worship-volunteer',
     company: 'Waypoint Church',
-    role: 'Volunteer Worship Team Member (May 2019–Present)',
+    dates: 'May 2019–Present',
+    role: 'Volunteer Worship Team Member',
     description: [
       'Play on the worship team for a church of over 3,000 members',
       'Lead songs and a few services for main worship services',
@@ -84,7 +88,7 @@ const experiences = [
     ],
     video: {
       url: 'https://www.youtube.com/embed/_giJb0Gaowc',
-      description: 'Check out a video of me leading Raise A Hallelujah at one of our Sunday Services!'
+      description: 'Check out a recent worship service at Waypoint, I had the honor of leading our first song this service!'
     }
   }
 ];
@@ -100,16 +104,16 @@ const ministryExperiences = experiences.filter(exp =>
 export default function Portfolio() {
   return (
     <section id="portfolio" className={styles.portfolio}>
-      <h2>Software Engineering & Ministry Experience</h2>
+      <h2>Experience</h2>
       <div className={styles.columnsContainer}>
         <div className={styles.column}>
-          <h3>Software Engineering Experience</h3>
+          <h3>Software Engineering</h3>
           {softwareExperiences.map(exp => (
             <ExperienceItem key={exp.id} experience={exp} />
           ))}
         </div>
         <div className={styles.column}>
-          <h3>Ministry Experience</h3>
+          <h3>Ministry</h3>
           {ministryExperiences.map(exp => (
             <ExperienceItem key={exp.id} experience={exp} />
           ))}
@@ -120,9 +124,13 @@ export default function Portfolio() {
 }
 
 function ExperienceItem({ experience }) {
+  const ref = useRef();
+  useScrollReveal(ref, styles.visible);
+
   const { company, dates, role, description, projects, link, video } = experience;
+
   return (
-    <div className={styles.experienceItem}>
+    <div ref={ref} className={styles.experienceItem}>
       <h4>
         {company} {dates && <span className={styles.dates}>— {dates}</span>}
       </h4>
@@ -136,7 +144,6 @@ function ExperienceItem({ experience }) {
         </ul>
       )}
 
-      {/* Render main link if exists and no projects */}
       {!projects && link && (
         <p className={styles.inlineLink}>
           <a href={link} target="_blank" rel="noopener noreferrer">
@@ -146,18 +153,20 @@ function ExperienceItem({ experience }) {
       )}
 
       {projects && projects.map(({ name, description, link, links }, i) => (
-        <div key={i} className={styles.projectItem}>
+        <div key={i} className={`${styles.projectItem} ${styles.visible}`}>
           <h5>{name}</h5>
-          <ul>
-            {description.map((desc, j) => (
-              <li key={j}>{desc}</li>
-            ))}
-          </ul>
+          {description && (
+            <ul>
+              {description.map((desc, j) => (
+                <li key={j}>{desc}</li>
+              ))}
+            </ul>
+          )}
 
           {link && (
             <p className={styles.inlineLink}>
               <a href={link} target="_blank" rel="noopener noreferrer">
-                {name === 'GEOAxIS (Leidos)' ? 'GEOAxIS' : link}
+                {name}
               </a>
             </p>
           )}
@@ -175,6 +184,7 @@ function ExperienceItem({ experience }) {
           )}
         </div>
       ))}
+
 
       {video && (
         <div className={styles.videoWrapper}>
