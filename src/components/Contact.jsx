@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import styles from '../styles/Contact.module.css';
-import { FaEnvelope, FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaEnvelope, FaLinkedin, FaGithub, FaFileAlt } from 'react-icons/fa';
 
 export default function Contact() {
   const containerRef = useRef();
@@ -49,6 +49,14 @@ export default function Contact() {
           className={styles.contactLink}
         >
           <FaGithub className={styles.icon} /> GitHub
+        </a>
+        <a
+          href={`${import.meta.env.BASE_URL}LoganMorrisResume0825.pdf`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.contactLink}
+        >
+          <FaFileAlt className={styles.icon} /> Resume
         </a>
       </div>
     </footer>
