@@ -26,8 +26,8 @@ export default function About() {
           <p>
             I’m currently focused on growing as a leader, enhancing my software engineering
             expertise, and exploring cutting-edge areas such as AI and emerging technologies.
-            My goal is to not only build impactful software but also bring creative solutions
-            to any arising challenges and learn more as I take on those challenges.
+            My goal is to not only build impactful software but also contribute creative solutions 
+            to emerging problems while continuously learning along the way.
           </p>
           <p>
             Outside of work, I’m a musician who plays multiple instruments (guitar, drums,

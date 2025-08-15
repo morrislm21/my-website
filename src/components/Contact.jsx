@@ -6,6 +6,8 @@ export default function Contact() {
   const containerRef = useRef();
 
   useEffect(() => {
+    if (!containerRef.current) return;
+
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
@@ -14,16 +16,16 @@ export default function Contact() {
             icons.forEach((icon, i) => {
               setTimeout(() => {
                 icon.classList.add(styles.visible);
-              }, i * 150); // stagger animation
+              }, i * 150);
             });
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.1 } // lower threshold for small screens
     );
 
-    if (containerRef.current) observer.observe(containerRef.current);
+    observer.observe(containerRef.current);
 
     return () => observer.disconnect();
   }, []);

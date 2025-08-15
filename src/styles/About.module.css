@@ -2,11 +2,10 @@
   padding: 3rem 2rem;
   background-color: var(--bg-color-about);
   color: var(--text-color);
-  opacity: 0;              /* start hidden */
+  opacity: 0;              
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
-
 
 .visible {
   opacity: 1;
@@ -21,7 +20,7 @@
 
 .content {
   display: flex;
-  flex-direction: column; /* Stack content vertically */
+  flex-direction: column; 
   gap: 2rem;
   justify-content: center;
   align-items: center;
@@ -34,21 +33,55 @@
 .about p {
   max-width: 1000px;
   margin: 0 auto 1rem auto;
-  line-height: 1.8; /* increased spacing for readability */
+  line-height: 1.8;
   text-align: center;
+  font-size: 1rem; 
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+  .about h2 {
+    font-size: 1.75rem;
+  }
+
+  .about p {
+    font-size: 0.95rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .about {
+    padding: 2rem 1rem; 
+  }
+
   .content {
     text-align: center;
+    gap: 1.5rem;
   }
 
   .text {
     max-width: 100%;
   }
+
+  .about p {
+    font-size: 0.9rem; 
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Optional smaller devices */
+@media (max-width: 480px) {
+  .about h2 {
+    font-size: 1.5rem;
+  }
+
+  .about p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
 }
 
 section {
-  scroll-margin-top: 80px; /* or whatever your navbar height is */
+  scroll-margin-top: 80px; 
 }

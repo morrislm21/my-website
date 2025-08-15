@@ -12,11 +12,11 @@
   display: flex;
   justify-content: center;
   gap: 2rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* allow horizontal wrapping */
 }
 
 .contactLink {
-  display: flex;
+  display: inline-flex; /* use inline-flex for natural sizing */
   align-items: center;
   gap: 0.5rem;
   color: var(--link-color);
@@ -50,11 +50,13 @@
 /* Responsive */
 @media (max-width: 480px) {
   .contactContainer {
-    flex-direction: column;
+    justify-content: center;
     gap: 1rem;
   }
-}
 
-section {
-  scroll-margin-top: 80px; /* or whatever your navbar height is */
+  .contactLink {
+    display: inline-flex; /* keep horizontal naturally */
+    justify-content: center;
+    text-align: center;
+  }
 }

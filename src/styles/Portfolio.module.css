@@ -1,9 +1,9 @@
 .portfolio {
   width: 100%;
-  padding: 2rem;
+  padding: 2rem 1rem;
   box-sizing: border-box;
   color: var(--text-color);
-  background-color: var(--bg-color-portfolio); /* darker greyscale */
+  background-color: var(--bg-color-portfolio);
   font-family: Arial, sans-serif;
 }
 
@@ -15,13 +15,14 @@
 }
 
 .column {
-  flex: 1;
-  min-width: 300px;
+  flex: 1 1 45%; /* allow side-by-side on desktop */
+  min-width: 0;  /* important to prevent overflow */
 }
 
 h2 {
   text-align: center;
   margin-bottom: 2rem;
+  font-size: 2rem;
 }
 
 h3 {
@@ -30,115 +31,75 @@ h3 {
   padding-bottom: 0.5rem;
 }
 
-.experienceItem {
-  margin-bottom: 2rem;
+.experienceItem,
+.projectItem {
+  margin-bottom: 1.5rem;
   background-color: var(--card-bg-color);
-  padding: 1rem 1.5rem;
+  padding: 1rem;
   border-radius: 8px;
 
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  /* Prevent horizontal overflow */
+  overflow-wrap: break-word;
 }
 
-.experienceItem.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.dates {
-  color: var(--muted-text-color);
-  font-weight: normal;
-  font-size: 0.9rem;
-}
-
-.role {
-  font-style: italic;
-  margin-bottom: 1rem;
-  color: var(--muted-text-color);
-}
-
-/* Fully left-aligned lists */
-.experienceItem ul,
-.projectItem ul {
-  margin: 0;
-  padding-left: 1rem; /* flush with card content */
-  margin-bottom: 1rem;
-  color: var(--muted-text-color);
-  list-style-type: disc;
-  list-style-position: inside;
-}
-
-.projects {
-  margin-top: 1rem;
-}
-
-.projectItem {
-  margin-bottom: 1.5rem;
-  text-align: left;
-
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
+.experienceItem.visible,
 .projectItem.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.projectItem h5 {
-  margin-bottom: 0.5rem;
-  color: var(--text-color);
-}
-
 .projectLinks {
   display: flex;
-  gap: 1rem;
+  gap: 0.8rem;
   flex-wrap: wrap;
-  padding-left: 0;
-  margin-top: 0.5rem;
 }
 
-.projectLinks p {
-  margin: 0;
+.videoWrapper iframe {
+  width: 100%;    /* make iframe responsive */
+  height: auto;
+  aspect-ratio: 16 / 9; /* maintain ratio */
 }
 
-.inlineLink a,
-.projectItem p a,
-.projectLinks a {
-  color: var(--link-color);
-  text-decoration: underline;
-}
-
-.inlineLink a:hover,
-.projectItem p a:hover,
-.projectLinks a:hover {
-  text-decoration: none;
-}
-
-.videoWrapper {
-  margin-top: 1rem;
-  text-align: center;
-}
-
-.videoWrapper p {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
-  color: var(--link-color);
-}
-
-/* Responsive */
+/* Responsive for tablets and mobile */
 @media (max-width: 768px) {
   .columnsContainer {
-    flex-direction: column;
+    display: block; /* stack columns vertically */
   }
 
-  .experienceItem {
-    padding: 1rem;
+  .column {
+    width: 100%;
+    margin-bottom: 2rem; /* spacing between columns */
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  h3 {
+    font-size: 1.1rem;
+  }
+
+  .experienceItem,
+  .projectItem {
+    padding: 0.9rem;
   }
 }
 
-section {
-  scroll-margin-top: 80px; /* or whatever your navbar height is */
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.4rem;
+  }
+
+  h3 {
+    font-size: 1rem;
+  }
+
+  .experienceItem,
+  .projectItem {
+    padding: 0.8rem;
+  }
 }

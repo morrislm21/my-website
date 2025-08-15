@@ -69,8 +69,8 @@ const experiences = [
       'Plan services for student worship using Planning Center for a student ministry of over 200 students',
       'Lead musical worship for midweek services, weekend retreats, and student camps',
       'Develop students on the worship team in leadership and musical skills',
-      'Work with staff members to direct worship in the student ministry',
-      'Plan and lead worship nights',
+      'Collaborate with staff members to direct worship in the student ministry',
+      'Orchestrate and lead worship nights',
       'Create and modify Ableton Live tracks used during worship'
     ],
   },
@@ -80,11 +80,11 @@ const experiences = [
     dates: 'May 2019–Present',
     role: 'Volunteer Worship Team Member',
     description: [
-      'Play on the worship team for a church of over 3,000 members',
-      'Lead songs and a few services for main worship services',
-      'Fill in as musical director when needed',
+      'Perform as a key member of the worship team for a 3,000+ member congregation, delivering hight quality musical worship for weekly services and special events',
+      'Lead songs and services for main worship gatherings',
+      'Serve in as musical director when needed',
       'Play in conferences hosted by the church',
-      'Work closely with the head worship pastor on planning services using Planning Center'
+      'Collaborate with the head worship pastor to utilize Planning Center Services, streamlining service planning and execution',
     ],
     video: {
       url: 'https://www.youtube.com/embed/_giJb0Gaowc',
@@ -104,7 +104,7 @@ const ministryExperiences = experiences.filter(exp =>
 export default function Portfolio() {
   return (
     <section id="portfolio" className={styles.portfolio}>
-      <h2>Experience</h2>
+      <h2>Portfolio</h2>
       <div className={styles.columnsContainer}>
         <div className={styles.column}>
           <h3>Software Engineering</h3>

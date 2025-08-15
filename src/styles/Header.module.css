@@ -1,17 +1,26 @@
 .header {
   position: sticky;
   top: 0;
-  background-color: var(--bg-color-header); /* make sure this is fully opaque, e.g., #111 */
+  background-color: var(--bg-color-header);
   padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.2); /* slightly stronger shadow for separation */
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.2);
   z-index: 100;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+/* Hide on scroll */
+.header--hidden {
+  transform: translateY(-100%);
+  opacity: 0;
+}
+
+/* Navigation */
 .nav {
   display: flex;
   gap: 2rem;
   font-weight: 600;
-  justify-content: flex-start; /* Left-justified links */
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .nav a {
@@ -24,9 +33,10 @@
   text-decoration: underline;
 }
 
+/* Theme toggle button */
 .themeToggle {
   margin-left: auto;
-  padding: 0.3rem 0.6rem;
+  padding: 0.4rem 0.8rem;
   background: none;
   border: 1px solid var(--text-color);
   color: var(--text-color);
@@ -44,3 +54,31 @@
   color: var(--bg-color-header);
 }
 
+/* Responsive for tablets and mobile */
+@media (max-width: 768px) {
+  .header {
+    padding: 0.6rem 1rem;
+  }
+
+  .nav {
+    gap: 1rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .themeToggle {
+    margin-left: 0;
+    padding: 0.4rem 0.6rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav {
+    gap: 0.8rem;
+  }
+
+  .themeToggle {
+    padding: 0.4rem 0.6rem;
+  }
+}

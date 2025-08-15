@@ -13,22 +13,26 @@ export default function Header() {
     setTheme(prev => (prev === 'dark' ? 'light' : 'dark'));
   };
 
+  const handleNavClick = (e, sectionId) => {
+    e.preventDefault();
+    const section = document.getElementById(sectionId);
+    if (!section) return;
+
+    const headerHeight = document.querySelector('header')?.offsetHeight || 0;
+    window.scrollTo({
+      top: section.offsetTop - headerHeight,
+      behavior: 'smooth',
+    });
+  };
+
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <a
-          href="#top"
-          onClick={e => {
-            e.preventDefault();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-        >
-          Home
-        </a>
-        <a href="#about">About</a>
-        <a href='#skills'>Skills</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#contact">Contact</a>
+        <a href="#top" onClick={e => handleNavClick(e, 'top')}>Home</a>
+        <a href="#about" onClick={e => handleNavClick(e, 'about')}>About</a>
+        <a href="#skills" onClick={e => handleNavClick(e, 'skills')}>Skills</a>
+        <a href="#portfolio" onClick={e => handleNavClick(e, 'portfolio')}>Portfolio</a>
+        <a href="#contact" onClick={e => handleNavClick(e, 'contact')}>Contact</a>
 
         <button onClick={toggleTheme} className={styles.themeToggle}>
           {theme === 'dark' ? <FaSun /> : <FaMoon />}
