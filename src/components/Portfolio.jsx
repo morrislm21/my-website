@@ -32,6 +32,7 @@ const experiences = [
           'Ran automated UI tests using Cucumber and Selenium, reducing manual testing efforts'
         ],
         link: 'https://www.leidos.com/insights/geoaxis-secures-intelligence-efficiency-nga',
+        linkName: 'GEOAxIS',
       },
       {
         name: 'Omni Labs',
@@ -59,6 +60,7 @@ const experiences = [
       'Helped develop the start of the Validatar application using HTML, CSS, and JavaScript'
     ],
     link: 'https://www.validatar.com/',
+    linkName: 'Validatar Website',
   },
   {
     id: 'worship',
@@ -88,7 +90,7 @@ const experiences = [
     ],
     video: {
       url: 'https://www.youtube.com/embed/_giJb0Gaowc',
-      description: 'Check out a recent worship service at Waypoint, I had the honor of leading our first song this service!'
+      description: 'Check out a recent worship service at Waypoint, I had the opportunity to lead our first song this service!'
     }
   }
 ];
@@ -127,7 +129,7 @@ function ExperienceItem({ experience }) {
   const ref = useRef();
   useScrollReveal(ref, styles.visible);
 
-  const { company, dates, role, description, projects, link, video } = experience;
+  const { company, dates, role, description, projects, link, linkName, video } = experience;
 
   return (
     <div ref={ref} className={styles.experienceItem}>
@@ -144,51 +146,51 @@ function ExperienceItem({ experience }) {
         </ul>
       )}
 
-      {!projects && link && (
-        <p className={styles.inlineLink}>
-          <a href={link} target="_blank" rel="noopener noreferrer">
-            Validatar
-          </a>
-        </p>
-      )}
+      {projects &&
+        projects.map(({ name, description, link, linkName, links }, i) => (
+          <div key={i} className={`${styles.projectItem} ${styles.visible}`}>
+            <h5>{name}</h5>
+            {description && (
+              <ul>
+                {description.map((desc, j) => (
+                  <li key={j}>{desc}</li>
+                ))}
+              </ul>
+            )}
 
-      {projects && projects.map(({ name, description, link, links }, i) => (
-        <div key={i} className={`${styles.projectItem} ${styles.visible}`}>
-          <h5>{name}</h5>
-          {description && (
-            <ul>
-              {description.map((desc, j) => (
-                <li key={j}>{desc}</li>
-              ))}
-            </ul>
-          )}
-
-          {link && (
-            <p className={styles.inlineLink}>
-              <a href={link} target="_blank" rel="noopener noreferrer">
-                {name}
-              </a>
-            </p>
-          )}
-
-          {links && (
-            <div className={styles.projectLinks}>
-              {links.map(({ name: linkName, url }, k) => (
-                <p key={k} className={styles.inlineLink}>
-                  <a href={url} target="_blank" rel="noopener noreferrer">
-                    {linkName}
+            {/* All project links in same format */}
+            {(link || links) && (
+              <div className={styles.projectLinks}>
+                {link && (
+                  <a href={link} target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
+                    {linkName || name}
                   </a>
-                </p>
-              ))}
-            </div>
-          )}
-        </div>
-      ))}
+                )}
+                {links &&
+                  links
+                    .map(({ name: linkName, url }, k) => (
+                      <a key={k} href={url} target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
+                        {linkName}
+                      </a>
+                    ))
+                    .reduce((prev, curr) => [prev, <span key="sep" style={{ margin: '0 0.5em' }} />, curr])}
+              </div>
+            )}
+          </div>
+        ))}
 
+      {/* Top-level link if no projects */}
+      {!projects && link && (
+        <div className={styles.projectLinks}>
+          <a href={link} target="_blank" rel="noopener noreferrer" className={styles.inlineLink}>
+            {linkName || company}
+          </a>
+        </div>
+      )}
 
       {video && (
         <div className={styles.videoWrapper}>
-          <p>{video.description}</p>
+          <p className={styles.videoDescription}>{video.description}</p>
           <iframe
             width="560"
             height="315"

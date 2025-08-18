@@ -9,8 +9,8 @@ export default function Skills() {
 
   return (
     <section id="skills" className={styles.skillsSection} ref={ref}>
+      <h2>Skills</h2>
       <div className={styles.skills}>
-        <h3>Skills</h3>
         <ul>
           <SkillItem>
             <strong>Languages:</strong> HTML | CSS | TypeScript | JavaScript | Python | Java | Bash | C++ | C# | SQL | 

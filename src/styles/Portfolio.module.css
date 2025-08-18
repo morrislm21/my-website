@@ -31,19 +31,33 @@ h3 {
   padding-bottom: 0.5rem;
 }
 
-.experienceItem,
-.projectItem {
+a {
+  color: var(--link-color);
+}
+
+.experienceItem {
   margin-bottom: 1.5rem;
   background-color: var(--card-bg-color);
-  padding: 1rem;
   border-radius: 8px;
 
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 
-  /* Prevent horizontal overflow */
   overflow-wrap: break-word;
+  padding: 1rem; /* top/right/bottom padding, no left */
+}
+.projectItem {
+  margin-bottom: 1.5rem;
+  background-color: var(--card-bg-color);
+  border-radius: 8px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+
+  overflow-wrap: break-word;
+  padding: 0rem; /* top/right/bottom padding, no left */
 }
 
 .experienceItem.visible,
@@ -52,16 +66,28 @@ h3 {
   transform: translateY(0);
 }
 
+/* Indent lists and links */
+.experienceItem ul,
+.projectItem ul,
 .projectLinks {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
+  padding-left: 1.2rem; /* adjust for desired indentation */
+  margin-top: 0.5rem;
+}
+
+.inlineLink {
+  text-decoration: underline;
 }
 
 .videoWrapper iframe {
   width: 100%;    /* make iframe responsive */
   height: auto;
   aspect-ratio: 16 / 9; /* maintain ratio */
+}
+
+.videoDescription {
+  color: var(--link-color);
+  font-weight: bold;
+  text-align: center;
 }
 
 /* Responsive for tablets and mobile */
