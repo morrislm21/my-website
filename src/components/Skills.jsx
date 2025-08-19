@@ -13,7 +13,7 @@ export default function Skills() {
       <div className={styles.skills}>
         <ul>
           <SkillItem>
-            <strong>Languages:</strong> HTML | CSS | TypeScript | JavaScript | Python | Java | Bash | C++ | C# | SQL | 
+            <strong>Languages:</strong> HTML | CSS | TypeScript | JavaScript | Python | Java | Bash | C++ | C# | SQL | Ruby
           </SkillItem>
           <SkillItem>
             <strong>Technologies:</strong> Git | React | Angular | Docker | AWS | Kubernetes | Windows | Linux | macOS | Atlassian Suite
